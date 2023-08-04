@@ -1,0 +1,29 @@
+{
+  "name": "northrend-crafting-almanac",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "sass src/sass/custom.scss css/custom.css && vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "parse": "node --experimental-specifier-resolution=node --loader ts-node/esm src/utilities/tsvParser.ts",
+    "release": "npm run parse && npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
+    "@types/node": "^18.0.3",
+    "bootstrap": "^5.1.3",
+    "sass": "^1.53.0",
+    "svelte": "^3.49.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.9.8",
+    "ts-node": "^10.8.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  },
+  "dependencies": {}
+}
