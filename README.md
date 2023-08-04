@@ -1,9 +1,9 @@
-# Northrend Crafting Almanac
+# Cataclysm Almanac
 
 ## What is this?
 
 A "simple" web page to display the data in my personal passion project which aims to catalogue all crafting
-resources in World of Warcraft's expansion Wrath of the Lich King. Also to learn Svelte and refresh my knowledge
+resources in World of Warcraft's expansion ~~Wrath of the Lich King~~ Cataclysm. Also to learn Svelte and refresh my knowledge
 of Typescript, the frontend, and everything.
 
 ## How to run?
