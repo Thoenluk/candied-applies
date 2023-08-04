@@ -37,7 +37,7 @@
     $: navSource = $navigationHierarchy["source"];
 
     $: {
-        const nullableZone = navSource?.zone;
+        const nullableZone = navSource?.zones;
         zone = nullableZone ? nullableZone : Zone.NORTHREND;
     }
 

@@ -55,7 +55,7 @@ export function matchesFilterSettings(source: Source): boolean {
     }
 
     return filterSettingsTemplate.permittedTypes.includes(source.type.name)
-        && (zoneIsNotDisplayedInFilters(source.zone) || filterSettingsTemplate.permittedZones.includes(source.zone.name))
+        && (zoneIsNotDisplayedInFilters(source.zones) || filterSettingsTemplate.permittedZones.includes(source.zones.name))
         && filterSettingsTemplate.earliestPhase >= source.phase
         && filterSettingsTemplate.highestPopularity >= source.popularity
         && requirementsMatch;

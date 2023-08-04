@@ -99,13 +99,13 @@ function createSource(sourceLine: string[]): Source {
         type: getSourceType(sourceLine[4]),
         name: sourceLine[5],
         overviewPin: createCoordinate(sourceLine[6]),
-        zone: getZone(sourceLine[7]),
+        zones: getZones(sourceLine[7]),
         requirements: getRequirements(sourceLine[8], sourceLine[9]),
         phase: getPhase(sourceLine[10]),
         confirmed: getConfirmed(sourceLine[10]),
         popularity: +sourceLine[11],
         comments: sourceLine[12],
-        pins: createCoordinates(sourceLine[13]),
+        pins: createPins(sourceLine[13]),
         areas: createAreas(sourceLine[14]),
         seeAlso: createSeeAlsos(sourceLine[15]),
         userPreference: UserPreference.Normal
@@ -138,13 +138,20 @@ function createCoordinate(rawCoordinate: string): Coordinate {
     }
 }
 
-function getZone(rawZone: string): Zone {
-    if (!isSet(rawZone) || rawZone === 'Any') {
-        return null;
+function getZones(rawZones: string): Zone[] {
+    if (!isSet(rawZones) || rawZones === 'Any') {
+        return [];
     }
 
-    const key = keyify(rawZone);
-    return Zone.fromString(key);
+    const zones = [];
+    const elements: string[] = rawZones.split(/; */);
+
+    for (const element of elements) {
+        const key = keyify(element);
+        zones.push(Zone.fromString(key));
+    }
+
+    return zones;
 }
 
 function getRequirements(rawRequirements: string, rawRequiresFlying: string): Requirement[] {
@@ -173,36 +180,66 @@ function getConfirmed(rawPhase: string): boolean {
     return rawPhase.indexOf('?') === -1;
 }
 
-function createCoordinates(rawPins: string): Coordinate[] {
+function createPins(rawPins: string): Coordinate[][] {
     if (!isSet(rawPins)) {
         return [];
     }
 
-    const elements: string[] = rawPins.split(/; */);
-    const pins: Coordinate[] = [];
+    const pins: Coordinate[][] = [];
+    const elements: string[] = rawPins.split(/\| */)
 
     for (const element of elements) {
-        pins.push(createCoordinate(element));
+        pins.push(createCoordinates(element));
     }
 
     return pins;
 }
 
-function createAreas(rawAreas: string): Area[] {
+function createCoordinates(rawCoordinates: string): Coordinate[] {
+    if (!isSet(rawCoordinates)) {
+        return [];
+    }
+
+    const elements: string[] = rawCoordinates.split(/; */);
+    const coordinates: Coordinate[] = [];
+
+    for (const element of elements) {
+        coordinates.push(createCoordinate(element));
+    }
+
+    return coordinates;
+}
+
+function createAreas(rawAreas: string): Area[][] {
     if (!isSet(rawAreas)) {
         return [];
     }
 
     const elements: string[] = rawAreas.split(/\| */);
-    const areas: Area[] = [];
+    const areas: Area[][] = [];
 
     for (const element of elements) {
-        areas.push({
+        areas.push(createAreasForMap(element));
+    }
+
+    return areas;
+}
+
+function createAreasForMap(rawAreasForMap: string): Area[] {
+    if (!isSet(rawAreasForMap)) {
+        return [];
+    }
+
+    const elements: string[] = rawAreasForMap.split(/\| */);
+    const areasForMap: Area[] = [];
+
+    for (const element of elements) {
+        areasForMap.push({
             vertices: createCoordinates(element)
         });
     }
 
-    return areas;
+    return areasForMap;
 }
 
 function createSeeAlsos(rawSeeAlsos: string): string[][] {

@@ -131,8 +131,8 @@
         </div>
         <div class="row align-items-center">
             <div class="col">
-                {#if source.zone && source.zone.name}
-                    {source.type.name + ' in ' + source.zone.name + '.'}
+                {#if source.zones && source.zones.name}
+                    {source.type.name + ' in ' + source.zones.name + '.'}
                 {:else}
                     {source.type.name + '.'}
                 {/if} {'Added in phase ' + source.phase + (source.confirmed ? '' : ' (unconfirmed)') + '.'}

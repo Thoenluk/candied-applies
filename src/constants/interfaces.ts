@@ -33,14 +33,14 @@ export interface Source {
     type: SourceType;
     name: string;
     overviewPin: Coordinate;
-    zone: Zone;
+    zones: Zone[];
     requirements: Requirement[];
     phase: number;
     confirmed: boolean;
     popularity: number;
     comments: string;
-    pins: Coordinate[];
-    areas: Area[];
+    pins: Coordinate[][];
+    areas: Area[][];
     seeAlso: string[][];
     userPreference: UserPreference;
 }
