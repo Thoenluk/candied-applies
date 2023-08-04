@@ -7,11 +7,11 @@
     import {
         ABANDONED_SOURCES,
         navigationHierarchy,
-        areaRedrawsRequired,
         TRACKED_SOURCES,
         LOCAL_STORAGE_ENABLED
     } from "./constants/stores";
     import Navbar from "./lib/Navbar.svelte";
+    import MapList from "./lib/MapList.svelte";
     import Map from "./lib/Map.svelte";
 
     let data = getData();
@@ -36,7 +36,6 @@
             const updateHierarchy = () => {
                 const [rawCategory, rawItem, rawSource] = getUrlNavigationHierarchy();
                 const newNavigationHierarchy: NavigationHierarchy = parseNavigationHierarchy(rawCategory, rawItem, rawSource, data);
-                $areaRedrawsRequired = !newNavigationHierarchy.source || $navigationHierarchy["source"] != newNavigationHierarchy.source ? 2 : 0;
                 navigationHierarchy.setWithoutUpdatingUrl(newNavigationHierarchy);
             }
 
@@ -85,7 +84,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Northrend Crafting Almanac</h1>
+                <h1>Cataclysm Almanac</h1>
             </div>
         </div>
         {#await data}
@@ -104,7 +103,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <Map modalId="enlargedMapModal" idSuffix="Base"/>
+                            <MapList modalId="enlargedMapModal" idSuffix="Base"/>
                         </div>
                     </div>
                 </div>
@@ -162,8 +161,8 @@
                         sources for later. This data is local only and never sent anywhere by your browser.
                     </p>
                     <p>
-                        You may disable local data storage in your browser, in which case you can still use the Northrend
-                        Crafting Almanac normally, except you cannot track or abandon (favorite or hide) any sources.
+                        You may disable local data storage in your browser, in which case you can still use the Cataclysm
+                        Almanac normally, except you cannot track or abandon (favorite or hide) any sources.
                     </p>
                 </div>
                 <div class="modal-footer">

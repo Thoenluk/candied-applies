@@ -54,11 +54,14 @@ export function matchesFilterSettings(source: Source): boolean {
         requirementsMatch = requirementsMatch && filterSettingsTemplate.permittedRequirements.includes(requirement.name);
     }
 
-    return filterSettingsTemplate.permittedTypes.includes(source.type.name)
-        && (zoneIsNotDisplayedInFilters(source.zones) || filterSettingsTemplate.permittedZones.includes(source.zones.name))
+    for (const zone of source.zones) {
+        requirementsMatch = requirementsMatch && (zoneIsNotDisplayedInFilters(zone) || filterSettingsTemplate.permittedZones.includes(zone.name));
+    }
+
+    return requirementsMatch
+        && filterSettingsTemplate.permittedTypes.includes(source.type.name)
         && filterSettingsTemplate.earliestPhase >= source.phase
-        && filterSettingsTemplate.highestPopularity >= source.popularity
-        && requirementsMatch;
+        && filterSettingsTemplate.highestPopularity >= source.popularity;
 }
 
 export function zoneIsTable(zone: Zone): boolean {

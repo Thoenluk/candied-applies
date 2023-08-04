@@ -1,6 +1,6 @@
 <script lang="ts">
     import {Zone} from "../constants/zone";
-    import {filterSettings, matchesFilterSettings, navigationHierarchy, areaRedrawsRequired} from "../constants/stores";
+    import {filterSettings, matchesFilterSettings, navigationHierarchy} from "../constants/stores";
     import {afterUpdate, onMount} from "svelte";
     import IconComponent from "./IconComponent.svelte";
     import type {Item, Source} from "../constants/interfaces";
@@ -9,6 +9,7 @@
 
     export let idSuffix: string;
     export let modalId: string = '';
+    export let index: number = 0;
 
     let zone: Zone;
     let navItem: Item;
@@ -37,27 +38,26 @@
     $: navSource = $navigationHierarchy["source"];
 
     $: {
-        const nullableZone = navSource?.zones;
-        zone = nullableZone ? nullableZone : Zone.NORTHREND;
+        const nullableZones = navSource?.zones;
+        zone = nullableZones && nullableZones.length > 0 ? nullableZones[index] : Zone.NORTHREND;
     }
 
-    afterUpdate(async () => {
-        drawAreas();
-    });
-
     onMount(async () => {
-        document.getElementById('map' + idSuffix).onmousemove = (event: MouseEvent) => {
+        document.getElementById('map' + idSuffix + index).onmousemove = (event: MouseEvent) => {
             const rect: DOMRect = (event.currentTarget as Element).getBoundingClientRect();
             x = (100 * (event.clientX - rect.left) / rect.width).toFixed(1);
             y = (100 * (event.clientY - rect.top) / rect.height).toFixed(1);
         }
     });
 
-    function drawAreas(): void {
-        if (navSource && $areaRedrawsRequired > 0) {
-            const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('areasCanvas' + idSuffix);
+    afterUpdate(async () => {
+        drawAreas();
+    });
+
+    export function drawAreas(): void {
+        if (navSource && navSource.areas[index]) {
+            const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('areasCanvas' + idSuffix + index);
             if (canvas) {
-                $areaRedrawsRequired = $areaRedrawsRequired - 1;
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
                 context.beginPath();
@@ -66,7 +66,7 @@
                 context.shadowColor = '#7a9db6';
                 context.lineWidth = 4;
 
-                for (const area of navSource.areas) {
+                for (const area of navSource.areas[index]) {
                     context.beginPath();
                     context.shadowBlur = 0;
                     context.moveTo(area.vertices[0].x * canvas.width / 100, area.vertices[0].y * canvas.height / 100);
@@ -100,7 +100,7 @@
     }
 </script>
 
-<div class="position-relative" id="{'map' + idSuffix}">
+<div class="position-relative" id="{'map' + idSuffix + index}">
     <img src="images/mapImages/{zone.mapImage}" alt="{zone.name}" class="img-fluid rounded-2"  data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
     <div class="coordinates p-1 ps-2 {zoneIsTable(zone) ? 'd-none' : ''}">
         {x + ', ' + y}
@@ -121,7 +121,7 @@
             {/if}
         {/each}
     {:else if navSource}
-        <canvas id="{'areasCanvas' + idSuffix}" width="1920" height="1080" data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
+        <canvas id="{'areasCanvas' + idSuffix + index}" width="1920" height="1080" data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
         </canvas>
         {#each navSource.pins as pin}
             <div style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}">

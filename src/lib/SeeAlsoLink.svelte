@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {Dataset} from "../constants/interfaces";
     import IconComponent from "./IconComponent.svelte";
-    import {navigationHierarchy, areaRedrawsRequired} from "../constants/stores";
+    import {navigationHierarchy} from "../constants/stores";
     import {parseNavigationHierarchy} from "../constants/interfaces";
 
     export let dataset: Dataset = null;
@@ -16,7 +16,6 @@
             item,
             source
         });
-        $areaRedrawsRequired = 2;
     }
 </script>
 

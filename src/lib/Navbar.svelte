@@ -1,13 +1,10 @@
 <script lang="ts">
-    import {navigationHierarchy, areaRedrawsRequired} from "../constants/stores.js";
+    import {navigationHierarchy} from "../constants/stores.js";
     import type {Category, Dataset, Item, Source} from '../constants/interfaces';
 
     export let dataset: Dataset;
 
     function setNavigation(category: Category, item: Item, source: Source): void {
-        if (!source || !$navigationHierarchy["source"] || source != $navigationHierarchy["source"]) {
-            $areaRedrawsRequired = 2;
-        }
         navigationHierarchy.set({
             category,
             item,

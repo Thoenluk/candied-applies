@@ -215,7 +215,7 @@ function createAreas(rawAreas: string): Area[][] {
         return [];
     }
 
-    const elements: string[] = rawAreas.split(/\| */);
+    const elements: string[] = rawAreas.split(/:: */);
     const areas: Area[][] = [];
 
     for (const element of elements) {
