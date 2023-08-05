@@ -40,5 +40,5 @@
 </script>
 
 {#each zones as zone, index}
-    <Map modalId="enlargedMapModal" idSuffix="{idSuffix}" index="{index}"/>
+    <Map modalId="enlargedMapModal" idSuffix="{idSuffix}" index="{index}" on:setModalMap/>
 {/each}

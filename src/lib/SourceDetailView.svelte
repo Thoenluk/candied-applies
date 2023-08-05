@@ -18,7 +18,7 @@
         'Beat the bots, save WoW, and finally get a girlfriend by outfarming them for $item: $url',
         'Please wake up. We don\t know where this will pop up, they say it may be related to your weird game Farm $item super fast! $url',
         'Step 1: Farm thousands of $item. Step 2: Wait for phase release. Step 3: It\'s worthless because everyone tried to do this? At least I can do it efficiently with the method at $url',
-        'Chuck Norris doesn\'t farm $item. He goes where the Northrend Crafting Almanac says and waits for it to come to him out of fear. $url',
+        'Chuck Norris doesn\'t farm $item. He goes where the Cataclysm Almanac says and waits for it to come to him out of fear. $url',
         'The virgin GDKP raider vs. the chad $item farmer: $url',
         'You go out with friends? Later, loser, I\'ll be busy getting rich with $item: $url',
         'They farmed how much $item per hour? Whaaaat? No way! *shocked reaction face* $url',
@@ -33,8 +33,8 @@
         '$item farming made so simple even a Paladin can do it! $url',
         'Did you ever hear the tragedy of Darth Toraka the Wise? I thought not. It\'s not a story the Paladins would tell you. ' +
         'It\'s a Warrior legend. Darth Toraka the Wise was a rich lord of the Warriors, so powerful and so wise he could use ' +
-        'the Northrend Crafting Almanac to influence the game to farm $item. He had such a knowledge of the farms he could ' +
-        'even keep the ones he cared about from poverty. The dark side of the Northrend Crafting Almanac is a pathway to many ' +
+        'the Cataclysm Almanac to influence the game to farm $item. He had such a knowledge of the farms he could ' +
+        'even keep the ones he cared about from poverty. The dark side of the Cataclysm Almanac is a pathway to many ' +
         'farms some consider to be unnatural. He became so wealthy, the only thing he was afraid of was everyone finding his ' +
         'farming routes, which eventually of course, they did. Unfortunately, he put all his farming routes online, then everyone ' +
         'could do it themselves. Ironic. He could save others from poverty, but not himself. $url',
@@ -45,7 +45,7 @@
         'Guys I found Mankrik\'s wife while farming $item: $url',
         '"Glad you could make it, Uther." "Watch your tone with me, boy. You may be my prince but I am still your superior ' +
         'as a Paladin." "As if I could forget. Listen, there\'s something about the $item you should know. Oh no, we\'re too late. ' +
-        'These people have all read the Northrend Crafting Almanac. They may look fine now, but it\'s only a matter of time ' +
+        'These people have all read the Cataclysm Almanac. They may look fine now, but it\'s only a matter of time ' +
         'until they begin farming $item." "What?" "Look here, at $url!"'
     ]
 

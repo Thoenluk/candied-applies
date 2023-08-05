@@ -15,6 +15,7 @@
     import Map from "./lib/Map.svelte";
 
     let data = getData();
+    let modalMapIndex: number = 0;
 
     if (LOCAL_STORAGE_ENABLED) {
         if (!localStorage.getItem(TRACKED_SOURCES)) {
@@ -78,6 +79,10 @@
             abandonedNavigationHierarchy.source.userPreference = UserPreference.Abandoned;
         }
     }
+
+    function setModalMap(event): void {
+        modalMapIndex = event.detail.index;
+    }
 </script>
 
 <main>
@@ -103,7 +108,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <MapList modalId="enlargedMapModal" idSuffix="Base"/>
+                            <MapList modalId="enlargedMapModal" idSuffix="Base" on:setModalMap={setModalMap}/>
                         </div>
                     </div>
                 </div>
@@ -139,7 +144,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-body position-relative p-0">
-                    <Map idSuffix="Modal"/>
+                    <Map idSuffix="Modal" index="{modalMapIndex}"/>
                     <button type="button" class="btn btn-light position-absolute end-0 bottom-0" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>

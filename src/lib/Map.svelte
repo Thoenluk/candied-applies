@@ -1,7 +1,7 @@
 <script lang="ts">
     import {Zone} from "../constants/zone";
     import {filterSettings, matchesFilterSettings, navigationHierarchy} from "../constants/stores";
-    import {afterUpdate, onMount} from "svelte";
+    import {afterUpdate, createEventDispatcher, onMount} from "svelte";
     import IconComponent from "./IconComponent.svelte";
     import type {Item, Source} from "../constants/interfaces";
     import {UserPreference} from "../constants/interfaces";
@@ -18,6 +18,7 @@
     let y: string = '0.0';
     let sortedSources: Source[];
     let filteredSources: Source[] = [];
+    const dispatch = createEventDispatcher();
 
     $: if ($filterSettings) {
         navItem = $navigationHierarchy["item"];
@@ -55,11 +56,16 @@
     });
 
     export function drawAreas(): void {
-        if (navSource && navSource.areas[index]) {
-            const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById('areasCanvas' + idSuffix + index);
+        if (navSource) {
+            const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector<HTMLCanvasElement>('#map' + idSuffix + index + ' canvas');
             if (canvas) {
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
+
+                if (!navSource.areas[index]) {
+                    return;
+                }
+
                 context.beginPath();
                 context.fillStyle = 'rgba(114, 135, 201, 0.7)';
                 context.strokeStyle = '#7a9db6';
@@ -98,6 +104,12 @@
                 return 'abandoned';
         }
     }
+
+    function setModalMap(): void {
+        dispatch('setModalMap', {
+           'index': index
+        });
+    }
 </script>
 
 <div class="position-relative" id="{'map' + idSuffix + index}">
@@ -121,7 +133,8 @@
             {/if}
         {/each}
     {:else if navSource}
-        <canvas id="{'areasCanvas' + idSuffix + index}" width="1920" height="1080" data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
+        <canvas id="{'areasCanvas' + idSuffix + index}" width="1920" height="1080" data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}"
+            on:click={setModalMap}>
         </canvas>
         {#each navSource.pins as pin}
             <div style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}">
