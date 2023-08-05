@@ -8,7 +8,7 @@
         ABANDONED_SOURCES,
         navigationHierarchy,
         TRACKED_SOURCES,
-        LOCAL_STORAGE_ENABLED
+        LOCAL_STORAGE_ENABLED, canvasesNeedingRedraws
     } from "./constants/stores";
     import Navbar from "./lib/Navbar.svelte";
     import MapList from "./lib/MapList.svelte";
@@ -37,6 +37,11 @@
             const updateHierarchy = () => {
                 const [rawCategory, rawItem, rawSource] = getUrlNavigationHierarchy();
                 const newNavigationHierarchy: NavigationHierarchy = parseNavigationHierarchy(rawCategory, rawItem, rawSource, data);
+                const canvases = [];
+                for (let canvas of document.getElementsByTagName("canvas")) {
+                    canvases.push(canvas.id);
+                }
+                $canvasesNeedingRedraws = canvases;
                 navigationHierarchy.setWithoutUpdatingUrl(newNavigationHierarchy);
             }
 
@@ -81,6 +86,7 @@
     }
 
     function setModalMap(event): void {
+        $canvasesNeedingRedraws.push('areasCanvas' + 'Modal' + event.detail.index);
         modalMapIndex = event.detail.index;
     }
 </script>

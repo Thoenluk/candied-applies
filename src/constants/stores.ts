@@ -38,7 +38,7 @@ const filterSettingsTemplate: FilterSettings = {
 
 export const filterSettings = writable(filterSettingsTemplate);
 
-export const areaRedrawsRequired = writable(2);
+export const canvasesNeedingRedraws = writable([]);
 
 export const hoveredSource = writable(null as Source);
 

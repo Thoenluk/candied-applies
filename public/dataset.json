@@ -5744,7 +5744,12 @@
                                     "key": "SHOLAZAR_BASIN",
                                     "mapImage": "SholazarBasin.jpg",
                                     "name": "Sholazar Basin"
-                                }
+                                },
+                              {
+                                "key": "GUNDRAK",
+                                "mapImage": "Gundrak.jpg",
+                                "name": "Gundrak"
+                              }
                             ],
                             "requirements": [
                                 {
@@ -5876,7 +5881,29 @@
                                             }
                                         ]
                                     }
-                                ]
+                                ],
+                              [
+                                {
+                                  "vertices": [
+                                    {
+                                      "x": 40,
+                                      "y": 20.5
+                                    },
+                                    {
+                                      "x": 43.9,
+                                      "y": 23.5
+                                    },
+                                    {
+                                      "x": 39.6,
+                                      "y": 35.85
+                                    },
+                                    {
+                                      "x": 33.88,
+                                      "y": 31.6
+                                    }
+                                  ]
+                                }
+                              ]
                             ],
                             "seeAlso": [],
                             "userPreference": 1

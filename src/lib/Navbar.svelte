@@ -1,10 +1,17 @@
 <script lang="ts">
-    import {navigationHierarchy} from "../constants/stores.js";
+    import {navigationHierarchy, canvasesNeedingRedraws} from "../constants/stores.js";
     import type {Category, Dataset, Item, Source} from '../constants/interfaces';
 
     export let dataset: Dataset;
 
     function setNavigation(category: Category, item: Item, source: Source): void {
+        if (!source || !$navigationHierarchy["source"] || source != $navigationHierarchy["source"]) {
+            const canvases = [];
+            for (let canvas of document.getElementsByTagName("canvas")) {
+                canvases.push(canvas.id);
+            }
+            $canvasesNeedingRedraws = canvases;
+        }
         navigationHierarchy.set({
             category,
             item,

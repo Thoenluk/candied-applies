@@ -1,6 +1,11 @@
 <script lang="ts">
     import {Zone} from "../constants/zone";
-    import {filterSettings, matchesFilterSettings, navigationHierarchy} from "../constants/stores";
+    import {
+        canvasesNeedingRedraws,
+        filterSettings,
+        matchesFilterSettings,
+        navigationHierarchy
+    } from "../constants/stores";
     import {afterUpdate, createEventDispatcher, onMount} from "svelte";
     import IconComponent from "./IconComponent.svelte";
     import type {Item, Source} from "../constants/interfaces";
@@ -49,6 +54,7 @@
             x = (100 * (event.clientX - rect.left) / rect.width).toFixed(1);
             y = (100 * (event.clientY - rect.top) / rect.height).toFixed(1);
         }
+        $canvasesNeedingRedraws.push('areasCanvas' + idSuffix + index);
     });
 
     afterUpdate(async () => {
@@ -58,7 +64,8 @@
     export function drawAreas(): void {
         if (navSource) {
             const canvas: HTMLCanvasElement = <HTMLCanvasElement>document.querySelector<HTMLCanvasElement>('#map' + idSuffix + index + ' canvas');
-            if (canvas) {
+            if (canvas && $canvasesNeedingRedraws.indexOf(canvas.id) > -1) {
+                $canvasesNeedingRedraws = $canvasesNeedingRedraws.filter(id => id !== canvas.id);
                 const context = canvas.getContext('2d');
                 context.clearRect(0, 0, canvas.width, canvas.height);
 

@@ -1,7 +1,7 @@
 <script lang="ts">
     import type {Dataset} from "../constants/interfaces";
     import IconComponent from "./IconComponent.svelte";
-    import {navigationHierarchy} from "../constants/stores";
+    import {canvasesNeedingRedraws, navigationHierarchy} from "../constants/stores";
     import {parseNavigationHierarchy} from "../constants/interfaces";
 
     export let dataset: Dataset = null;
@@ -16,6 +16,11 @@
             item,
             source
         });
+        const canvases = [];
+        for (let canvas of document.getElementsByTagName("canvas")) {
+            canvases.push(canvas.id);
+        }
+        $canvasesNeedingRedraws = canvases;
     }
 </script>
 
