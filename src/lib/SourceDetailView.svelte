@@ -17,7 +17,7 @@
         'Can\'t find any $item? Don\'t worry, I am an engineer! $url',
         'Beat the bots, save WoW, and finally get a girlfriend by outfarming them for $item: $url',
         'Please wake up. We don\t know where this will pop up, they say it may be related to your weird game Farm $item super fast! $url',
-        'Step 1: Farm thousands of $item. Step 2: Wait for phase release. Step 3: It\'s worthless because everyone tried to do this? At least I can do it efficiently with the method at $url',
+        'Step 1: Farm thousands of $item. Step 2: Wait for phase release. Step 3: It\'s worthless because everyone tried to do this? At least I can do it efficiently! $url',
         'Chuck Norris doesn\'t farm $item. He goes where the Cataclysm Almanac says and waits for it to come to him out of fear. $url',
         'The virgin GDKP raider vs. the chad $item farmer: $url',
         'You go out with friends? Later, loser, I\'ll be busy getting rich with $item: $url',
@@ -46,7 +46,17 @@
         '"Glad you could make it, Uther." "Watch your tone with me, boy. You may be my prince but I am still your superior ' +
         'as a Paladin." "As if I could forget. Listen, there\'s something about the $item you should know. Oh no, we\'re too late. ' +
         'These people have all read the Cataclysm Almanac. They may look fine now, but it\'s only a matter of time ' +
-        'until they begin farming $item." "What?" "Look here, at $url!"'
+        'until they begin farming $item." "What?" "Look here, at $url!"',
+        'Blizzard: You\'ll need tons of $item. Also Blizzard: Your only real farm is $url. Lmao.',
+        '$item farming challenge: NO STOPPING UNTIL GOLD CAP! DAY 7 FINAL DAY! $url',
+        'Yes, you can get all the $item you need without "having to resort to gold buying", Adrian. Look at $url',
+        'Parse 32 in dps, 100 in $item farming: $url',
+        'Look, paladins may have three top tier specs, four unique buffs, coverage for every other raid buff under the sun, ' +
+        'they may be the best at single target and group tanking, tank and group healing, burst damage, sustained dps, ' +
+        'single target dps, and cleave, but what have they ever done for us? Oh they also farmed all our $item. Huh. $url',
+        'Oh be quiet about $item. Everyone knows it\'s best found at $url',
+        'Fifty thousand bots used to farm $item. Now it\'s a ghost town. $url',
+        'Sure $url may be slightly long just to share a farm for $item, but what are you going to do, tweet this?'
     ]
 
     let sharePhrase: string = '';

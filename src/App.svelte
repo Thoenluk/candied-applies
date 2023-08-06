@@ -95,7 +95,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Cataclysm Almanac</h1>
+                <h1>Cataclysm Almanac: It's never Too Soon™ to farm!</h1>
             </div>
         </div>
         {#await data}
