@@ -45,7 +45,7 @@
 
     $: {
         const nullableZones = navSource?.zones;
-        zone = nullableZones && nullableZones.length > 0 ? nullableZones[index] : Zone.NORTHREND;
+        zone = nullableZones && nullableZones.length > 0 ? nullableZones[index] : Zone.AZEROTH;
     }
 
     onMount(async () => {

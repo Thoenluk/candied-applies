@@ -265,7 +265,7 @@ function createSeeAlsos(rawSeeAlsos: string): string[][] {
 }
 
 function enumify(rawEnumString: string): string {
-    let enumified = rawEnumString.replace(/'/g, '');
+    let enumified = rawEnumString.replace(/[':]/g, '');
     enumified = enumified.replace(/-/g, ' ');
     enumified = enumified.toLowerCase().trim();
     const words = enumified.split(' ');

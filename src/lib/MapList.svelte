@@ -35,7 +35,7 @@
 
     $: {
         const nullableZones = navSource?.zones;
-        zones = nullableZones && nullableZones.length > 0 ? nullableZones : [Zone.NORTHREND];
+        zones = nullableZones && nullableZones.length > 0 ? nullableZones : [Zone.AZEROTH];
     }
 </script>
 

@@ -4,6 +4,22 @@ import {Zone} from "./zone";
 import {SourceType} from "./sourceType";
 import {Requirement} from "./requirement";
 
+const ZONES_EXCLUDED_FROM_NAVIGATION = [
+    Zone.AZEROTH,
+    Zone.ENCHANTING,
+    Zone.FERALAS,
+    Zone.PROSPECTING,
+    Zone.TRANSMUTATION_WITH_CD,
+    Zone.TRANSMUTATION_WITHOUT_CD
+];
+
+const ZONES_THAT_ARE_TABLES = [
+    Zone.ENCHANTING,
+    Zone.TRANSMUTATION_WITH_CD,
+    Zone.TRANSMUTATION_WITHOUT_CD,
+    Zone.PROSPECTING
+];
+
 const navigationHierarchyTemplate: NavigationHierarchy = {
     category: undefined,
     item: undefined,
@@ -65,14 +81,11 @@ export function matchesFilterSettings(source: Source): boolean {
 }
 
 export function zoneIsTable(zone: Zone): boolean {
-    return zone && [Zone.ENCHANTING.name, Zone.INSCRIPTION.name, Zone.TRANSMUTATION.name,
-        Zone.PROSPECTING.name].includes(zone.name);
+    return zone && ZONES_THAT_ARE_TABLES.includes(zone);
 }
 
 function zoneIsNotDisplayedInFilters(zone: Zone): boolean {
-    return !zone ||
-        [Zone.NORTHREND.name, Zone.ENCHANTING.name, Zone.INSCRIPTION.name, Zone.TRANSMUTATION.name,
-        Zone.PROSPECTING.name, Zone.ELWYNN_FOREST.name, Zone.TIRISFAL_GLADES.name].includes(zone.name);
+    return !zone || ZONES_EXCLUDED_FROM_NAVIGATION.includes(zone);
 }
 
 function localStorageIsEnabled(): boolean {
