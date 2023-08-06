@@ -192,6 +192,7 @@ export enum Icon {
 
     // Requirements
     Alchemy = 'req/alchemy.jpg',
+    Archeology = 'req/archeology.jpg',
     Blacksmithing = 'req/blacksmithing.jpg',
     Cooking = 'req/cooking.jpg',
     Enchanting = 'req/enchanting.jpg',

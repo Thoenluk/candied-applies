@@ -11,13 +11,14 @@ export class SourceType {
     static readonly MILLED = new SourceType("MILLED", Icon.Milled, "Milled");
     static readonly MINED = new SourceType("MINED", Icon.Mined, "Mined");
     static readonly PROSPECTED = new SourceType("PROSPECTED", Icon.Prospected, "Prospected");
-    static readonly SALVAGED = new SourceType("SALVAGED", Icon.Salvaged, "Salvaged");
+    static readonly QUEST = new SourceType("QUEST", Icon.Quest, "Quest");
     static readonly SKINNED = new SourceType("SKINNED", Icon.Skinned, "Skinned");
     static readonly SOLD = new SourceType("SOLD", Icon.Sold, "Sold");
+    static readonly SURVEYED = new SourceType("SURVEYED", Icon.Archeology, "Surveyed");
 
     public static readonly values = [SourceType.CONTAINER, SourceType.CRAFTED, SourceType.CREATED, SourceType.DISENCHANTED,
         SourceType.DROP, SourceType.FISHED, SourceType.GATHERED, SourceType.MILLED, SourceType.MINED, SourceType.PROSPECTED,
-        SourceType.SALVAGED, SourceType.SKINNED, SourceType.SOLD];
+        SourceType.SKINNED, SourceType.SOLD, SourceType.SURVEYED];
 
     private constructor(private readonly key: string, public readonly icon: Icon, public readonly name: string) {
     }
