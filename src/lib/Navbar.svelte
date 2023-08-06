@@ -85,4 +85,7 @@
     .dropdown-item:hover {
         background: var(--button-red-hover) var(--bs-gradient);
     }
+    .btn-group:hover .dropdown-menu {
+        display: block;
+    }
 </style>
