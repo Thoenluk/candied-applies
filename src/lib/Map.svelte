@@ -74,9 +74,9 @@
                 }
 
                 context.beginPath();
-                context.fillStyle = 'rgba(114, 135, 201, 0.7)';
-                context.strokeStyle = '#7a9db6';
-                context.shadowColor = '#7a9db6';
+                context.fillStyle = '#F88F00B2';
+                context.strokeStyle = '#FF5F09FF';
+                context.shadowColor = '#FF5F09FF';
                 context.lineWidth = 4;
 
                 for (const area of navSource.areas[index]) {
