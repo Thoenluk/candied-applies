@@ -193,6 +193,7 @@ export enum Icon {
     // Requirements
     Alchemy = 'req/alchemy.jpg',
     Blacksmithing = 'req/blacksmithing.jpg',
+    Cooking = 'req/cooking.jpg',
     Enchanting = 'req/enchanting.jpg',
     Engineering = 'req/engineering.jpg',
     Fishing = 'req/fishing.jpg',
@@ -202,11 +203,9 @@ export enum Icon {
     Inscription = 'req/inscription.jpg',
     Jewelcrafting = 'req/jewelcrafting.jpg',
     Leatherworking = 'req/leatherworking.jpg',
-    Lockpicking = 'req/lockpicking.jpg',
     Mining = 'req/mining.jpg',
     Quest = 'req/quest.jpg',
     Skinning = 'req/skinning.jpg',
-    Stealth = 'req/stealth.jpg',
     Tailoring = 'req/tailoring.jpg',
 
     // Source types
