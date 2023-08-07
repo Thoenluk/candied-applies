@@ -18,7 +18,7 @@ export class SourceType {
 
     public static readonly values = [SourceType.CONTAINER, SourceType.CRAFTED, SourceType.CREATED, SourceType.DISENCHANTED,
         SourceType.DROP, SourceType.FISHED, SourceType.GATHERED, SourceType.MILLED, SourceType.MINED, SourceType.PROSPECTED,
-        SourceType.SKINNED, SourceType.SOLD, SourceType.SURVEYED];
+        SourceType.QUEST, SourceType.SKINNED, SourceType.SOLD, SourceType.SURVEYED];
 
     private constructor(private readonly key: string, public readonly icon: Icon, public readonly name: string) {
     }
