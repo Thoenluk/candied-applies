@@ -120,7 +120,7 @@
 </script>
 
 <div class="position-relative" id="{'map' + idSuffix + index}">
-    <img src="images/mapImages/{zone.mapImage}" alt="{zone.name}" class="img-fluid rounded-2"  data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
+    <img src="images/mapImages/{zone?.mapImage}" alt="{zone?.name}" class="img-fluid rounded-2"  data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}">
     <div class="coordinates p-1 ps-2 {zoneIsTable(zone) ? 'd-none' : ''}">
         {x + ', ' + y}
     </div>
