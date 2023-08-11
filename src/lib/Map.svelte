@@ -143,11 +143,13 @@
         <canvas id="{'areasCanvas' + idSuffix + index}" width="1920" height="1080" data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}"
             on:click={setModalMap}>
         </canvas>
-        {#each navSource.pins as pin}
-            <div style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}">
-                <IconComponent icon="{navItem.icon}" height="32px" width="32px" title="{pin.x + ', ' + pin.y}" />
-            </div>
-        {/each}
+        {#if navSource.pins[index]}
+            {#each navSource.pins[index] as pin}
+                <div style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}">
+                    <IconComponent icon="{navItem.icon}" height="32px" width="32px" title="{pin.x + ', ' + pin.y}" />
+                </div>
+            {/each}
+        {/if}
     {/if}
 </div>
 

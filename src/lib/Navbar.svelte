@@ -33,7 +33,7 @@
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark px-3 rounded-2">
-    <button type="button" class="btn border border-light rounded-2" on:click={() => navigationHierarchy.reset()}>Northrend</button>
+    <button type="button" class="btn border border-light rounded-2" on:click={() => navigationHierarchy.reset()}>Azeroth</button>
     {#if $navigationHierarchy["category"]}
         <div class="btn-group border border-light ms-2 rounded-2">
             <button type="button" class="btn" on:click={() => setNavigationToCategory($navigationHierarchy["category"])}>{$navigationHierarchy["category"].name}</button>
