@@ -145,8 +145,10 @@
         </canvas>
         {#if navSource.pins[index]}
             {#each navSource.pins[index] as pin}
-                <div style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}">
-                    <IconComponent icon="{navItem.icon}" height="32px" width="32px" title="{pin.x + ', ' + pin.y}" />
+                <div class="pin" style="{'position: absolute; top: calc(' + pin.y + '% - 16px); ; left: calc(' + pin.x + '% - 16px);'}"
+                     data-bs-toggle="{modalId ? 'modal' : ''}" data-bs-target="{modalId ? '#' + modalId : ''}"
+                     on:click={setModalMap}>
+                    <IconComponent icon="{navItem.icon}" height="32px" width="32px" title="{pin.x + ', ' + pin.y}"  />
                 </div>
             {/each}
         {/if}
@@ -170,5 +172,14 @@
         left: 0;
         height: 100%;
         width: 100%;
+    }
+
+    .pin {
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+
+        -ms-user-select: none;
+        user-select: none;
     }
 </style>
