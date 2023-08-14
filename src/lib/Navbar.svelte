@@ -33,7 +33,16 @@
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-dark px-3 rounded-2">
-    <button type="button" class="btn border border-light rounded-2" on:click={() => navigationHierarchy.reset()}>Azeroth</button>
+    <div class="btn-group border border-light rounded-2">
+        <button type="button" class="btn rounded-2" on:click={() => navigationHierarchy.reset()}>Azeroth</button>
+        <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item rounded-2" on:click={() => navigationHierarchy.reset()}>Azeroth</a></li>
+            <li><a class="dropdown-item rounded-2" href="https://northrend-crafting-almanac.vercel.app/">Northrend</a></li>
+        </ul>
+    </div>
     {#if $navigationHierarchy["category"]}
         <div class="btn-group border border-light ms-2 rounded-2">
             <button type="button" class="btn" on:click={() => setNavigationToCategory($navigationHierarchy["category"])}>{$navigationHierarchy["category"].name}</button>
