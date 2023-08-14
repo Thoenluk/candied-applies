@@ -5,19 +5,19 @@ import {SourceType} from "./sourceType";
 import {Requirement} from "./requirement";
 
 const ZONES_EXCLUDED_FROM_NAVIGATION = [
-    Zone.AZEROTH,
-    Zone.ENCHANTING,
-    Zone.FERALAS,
-    Zone.PROSPECTING,
-    Zone.TRANSMUTATION_WITH_CD,
-    Zone.TRANSMUTATION_WITHOUT_CD
+    Zone.AZEROTH.name,
+    Zone.ENCHANTING.name,
+    Zone.FERALAS.name,
+    Zone.PROSPECTING.name,
+    Zone.TRANSMUTATION_WITH_CD.name,
+    Zone.TRANSMUTATION_WITHOUT_CD.name
 ];
 
 const ZONES_THAT_ARE_TABLES = [
-    Zone.ENCHANTING,
-    Zone.TRANSMUTATION_WITH_CD,
-    Zone.TRANSMUTATION_WITHOUT_CD,
-    Zone.PROSPECTING
+    Zone.ENCHANTING.name,
+    Zone.TRANSMUTATION_WITH_CD.name,
+    Zone.TRANSMUTATION_WITHOUT_CD.name,
+    Zone.PROSPECTING.name
 ];
 
 const navigationHierarchyTemplate: NavigationHierarchy = {
@@ -48,7 +48,7 @@ const filterSettingsTemplate: FilterSettings = {
     permittedTypes: SourceType.values.map(t => t.name),
     permittedZones: Zone.openWorld.concat(Zone.dungeons).map(z => z.name),
     permittedRequirements: Requirement.values.map(r => r.name),
-    earliestPhase: 3,
+    earliestPhase: 1,
     highestPopularity: 5
 }
 
@@ -72,6 +72,7 @@ export function matchesFilterSettings(source: Source): boolean {
 
     for (const zone of source.zones) {
         requirementsMatch = requirementsMatch && (zoneIsNotDisplayedInFilters(zone) || filterSettingsTemplate.permittedZones.includes(zone.name));
+        console.log(source.name + ': ' + zone.name);
     }
 
     return requirementsMatch
@@ -81,11 +82,11 @@ export function matchesFilterSettings(source: Source): boolean {
 }
 
 export function zoneIsTable(zone: Zone): boolean {
-    return zone && ZONES_THAT_ARE_TABLES.includes(zone);
+    return zone && ZONES_THAT_ARE_TABLES.includes(zone.name);
 }
 
 function zoneIsNotDisplayedInFilters(zone: Zone): boolean {
-    return !zone || ZONES_EXCLUDED_FROM_NAVIGATION.includes(zone);
+    return !zone || ZONES_EXCLUDED_FROM_NAVIGATION.includes(zone.name);
 }
 
 function localStorageIsEnabled(): boolean {
