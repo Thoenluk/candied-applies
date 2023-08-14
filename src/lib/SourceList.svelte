@@ -2,7 +2,7 @@
     import type {Item, Source} from "../constants/interfaces";
     import ItemLink from "./ItemLink.svelte";
     import SourceLink from "./SourceLink.svelte";
-    import {navigationHierarchy, filterSettings} from "../constants/stores";
+    import {navigationHierarchy, filterSettings, canvasesNeedingRedraws} from "../constants/stores";
     import {matchesFilterSettings} from "../constants/stores.js";
     import FilterBar from "./FilterBar.svelte";
 
@@ -24,6 +24,12 @@
 
     function setNavigationSource(source: Source): void {
         $navigationHierarchy["source"] = source;
+        const canvases = [];
+        for (let i = 0; i < source.zones.length; i++) {
+            canvases.push('areasCanvasBase' + i);
+        }
+        canvases.push('areasCanvasModal0');
+        $canvasesNeedingRedraws = canvases;
     }
 
 </script>

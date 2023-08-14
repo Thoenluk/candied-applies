@@ -98,7 +98,18 @@
     }
 
     function setNavigationToSource(source: Source): void {
-        $navigationHierarchy["source"] = source;
+        const newHierarchy = {
+            category: $navigationHierarchy["category"],
+            item: navItem,
+            source: source
+        };
+        navigationHierarchy.set(newHierarchy);
+        const canvases = [];
+        for (let i = 0; i < source.zones.length; i++) {
+            canvases.push('areasCanvasBase' + i);
+        }
+        canvases.push('areasCanvasModal0');
+        $canvasesNeedingRedraws = canvases;
     }
 
     function getClassForUserPreference(source: Source): string {
