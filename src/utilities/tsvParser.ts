@@ -7,6 +7,7 @@ import {Requirement} from "../constants/requirement";
 import * as fs from 'fs';
 
 function parse(): Dataset {
+    const startTime = new Date();
     const table: string[][] = readTSV();
     const lineGroups: LineGroup[] = groupLines(table, 0);
 
@@ -20,8 +21,9 @@ function parse(): Dataset {
         dataset.categories.push(createCategory(lineGroup));
     }
 
+    const endTime = new Date();
+    console.log("All done in " + (endTime.getTime() - startTime.getTime()) + "ms :>");
     return dataset;
-
 }
 
 function readTSV(): string[][] {
