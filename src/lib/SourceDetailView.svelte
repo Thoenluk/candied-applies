@@ -265,6 +265,7 @@
         background-image: url('/questlog.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
+        max-height: 772px;
     }
 
     .details .btn {
