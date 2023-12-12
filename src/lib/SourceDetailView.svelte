@@ -136,11 +136,12 @@
     <div class="col">
         <div class="row">
             <div class="col">
-                <h4>{item.name} ({source.name})</h4>
+                <h4><IconComponent icon="{item.icon}" /> {item.name} ({source.name})</h4>
             </div>
         </div>
         <div class="row align-items-center">
             <div class="col">
+                <IconComponent icon="{source.type.icon}" title="{source.type.name}"/>
                 {#if source.zones && source.zones.name}
                     {source.type.name + ' in ' + source.zones.name + '.'}
                 {:else}

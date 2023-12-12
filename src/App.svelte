@@ -147,7 +147,7 @@
     </div>
 
     <div class="modal" id="enlargedMapModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-body position-relative p-0">
                     <Map idSuffix="Modal" index="{modalMapIndex}"/>
